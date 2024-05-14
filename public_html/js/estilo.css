@@ -1,0 +1,16 @@
+#Capa {
+    position: relative;
+    width: 250px;
+    height: 400px;
+    z-index: 1;
+
+}
+#Sinopse {
+    position: absolute;
+    width: 641px;
+    height: 236px;
+    z-index: 2;
+    left: 415px;
+
+}
+
