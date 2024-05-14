@@ -1,0 +1,148 @@
+<?php
+
+/*apenas dispara o envio da mensagem caso houver/existir $_POST['enviar']*/
+if (isset($_POST['enviar']))
+
+{
+/*digite os destinatarios separados por virgula*/
+$destinatarios = 'marco@teachers.org';
+
+/*usuario ou nome completo da conta criada em sua hospedagem, como por exemplo teste@seudominio*/
+$usuario = 'marco@edusaber.net';
+
+/*senha da conta de email acima*/
+$senha = 'smatm5m5';
+
+/*nome do destinatario no qual receberá a mensagem*/
+$nomeDestinatario = 'Nome do destinatário';
+
+/*abaixo as veriaveis principais, que devem conter em seu formulario*/
+$nomeRemetente = $_POST['nomeRemetente'];
+$assunto = $_POST['assunto'];
+$_POST['mensagem'] = nl2br('E-mail: '. $_POST['email'] ."
+
+". $_POST['mensagem']);
+
+/***********************************A PARTIR DAQUI NAO ALTERAR************************************/
+
+include_once("class.phpmailer.php");
+
+$To = $destinatarios;
+$Subject = $assunto;
+$Message = $_POST['mensagem'];
+
+$Host = 'smtp.'.substr(strstr($usuario, '@'), 1);
+$Username = $usuario;
+$Password = $senha;
+$Port = "587";
+
+$mail = new PHPMailer();
+$body = $Message;
+$mail->IsSMTP(); // telling the class to use SMTP
+$mail->Host = $Host; // SMTP server
+$mail->SMTPDebug = 0; // enables SMTP debug information (for testing)
+// 1 = errors and messages
+// 2 = messages only
+$mail->SMTPAuth = true; // enable SMTP authentication
+$mail->Port = $Port; // set the SMTP port for the service server
+$mail->Username = $Username; // account username
+$mail->Password = $Password; // account password
+
+$mail->SetFrom($usuario, $nomeDestinatario);
+$mail->Subject = $Subject;
+$mail->MsgHTML($body);
+$mail->AddAddress($To, "");
+
+if(!$mail->Send()) {
+$mensagemRetorno = 'Erro ao enviar e-mail: '. print($mail->ErrorInfo);
+} else {
+$mensagemRetorno = 'E-mail enviado com sucesso!';
+}
+
+}
+
+?>
+
+
+
+<!-- COMEÇA AQUI O FORMULARIO EM HTML -->
+<!-- MAIS CAMPOS PODEM SER INSERIDOS NORMALMENTE ENTRE A TAG FORM -->
+<!-- CASO ADICIONE MAIS CAMPOS, NÃO ESQUEÇA DE CHAMÁ-LOS NO ITEM VARIÁVEIS PRINCIPAIS NA LINHA 22 -->
+
+<html>
+<head>
+<title>Formulário de Contato</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<form method="post" action="">
+<table width="401" bgcolor="#cccccc" border="1" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<h1 align="center">
+Formulario de teste
+</h1>
+<h5 align="center">
+(smtp autenticado)
+</h5>
+<?php
+
+if (isset($_POST['enviar']))
+{
+print "<h4 align=center>$mensagemRetorno</h4>";
+}
+
+?>
+</tr>
+<tr>
+<td valign="middle" nowrap>
+<p>
+<font color="#000">Nome:</font></p>
+</td>
+<td width="301">
+<input type="text" name="nomeRemetente" size="34">
+</td>
+</tr>
+<tr>
+<td valign="middle" nowrap>
+<p>
+<font color="#000">E-mail:</font></p>
+</td>
+<td>
+<input type="text" name="email" size="34">
+</td>
+</tr>
+<tr>
+<td valign="middle" nowrap>
+<p><font color="#000">Assunto:</font></p>
+</td>
+<td>
+<select name="assunto">
+<option value="opinião" selected>Opinião</option>
+<option value="sugestão">Sugestão</option>
+<option value="parceria">Parceria</option>
+<option value="outros">Outros</option>
+</select>
+</td>
+</tr>
+<tr>
+<td valign="middle" nowrap align="center">
+<p><font color="#000">Mensagem:</font></p>
+</td>
+<td>
+<textarea name="mensagem" cols="34" rows="4"></textarea>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="middle">
+<br>
+<div align="center">
+<input type="submit" name="enviar" value="enviar">
+<input type="reset" name="limpar" value="limpar">
+</div>
+</td>
+</tr>
+</table>
+</form>
+</body>
+</html>
+<!-- TERMINA AQUI O FORMULARIO EM HTML -->

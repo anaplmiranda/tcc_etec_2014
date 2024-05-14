@@ -1,0 +1,71 @@
+/*
+Programado por: Gunnar Correa
+Empresa: SatellaSoft
+E-mail:contato@gunnarcorrea.com
+Sites:
+ http://www.satellasoft.com
+ http://www.gunnarcorrea.com
+Todos os direitos reservados
+*/
+*{margin:0 auto; padding: 0;} /*Centralizamos todos elementos da página*/
+body{/*Corpo do site*/
+    background-color: aliceblue;/*Definimos a cor de fundo da página como azul claro*/
+}
+p{/*Todos paragráfos*//*Fonte verdana*/
+    color:#111111;/*Cor cinza escuro*//*Negrito*/
+    letter-spacing:1px;/*Espacamento dos caracteres de 1px*/
+}
+#dvCentro{/*Div centro*/
+    width:550px;/*Largura de 550px*/
+    height:auto;/*Altura automática*/
+    background-color:brown;/*Cor de funco marrom*/
+    border: 2px solid #ccc;/*Borda de 2px na cor cinza claro*/
+}
+#dvMensagem{/*Div que exibe as mensagens*/
+    width:100%;/*largura de 100% de acordo com a div pai*/
+    height:400px;/*altura de 400px*/
+    background-color: #FFFFFF;/*Cor de funco branca*/
+    padding:3px; /*Espaçamento de 3px*/
+    border-bottom: 2px solid #ccc;/*Borda de 2px cinza claro*/
+    overflow-y: auto;/*Barra de rolagem vertical automática*//*Fonte Verdana*/
+}
+#txtNickName{ /*Input que insere o nome*/
+    padding:3px;/*Espaçamento de 3px*/
+    width:400px;/*Largura de 400px*/
+    margin:5px;/*Margem de 5px*/
+    border:0;/*Removemos a borda*/
+    outline-color: blue;/*Troquei a cor da borda para azul*/
+}
+#txtMensagem{/*Textarea que escreve as mensagens*/
+    width:540px;/*Largura de 540px*/
+    height:100px;/*Altura de 100px*/
+    border:0;/*Sem borda*/
+    padding:5px;/*Espaçamento de 5px*/
+    color:#111111;/*Cor cinza escuro*//*Fonte Courier*/
+    outline-color: red;/*Cor da borda para vermelho*/
+}
+#btnSubmit{/*Botão que envia o formulário*/
+    background-color: crimson;/*Cor de fundo Crimson*//*Fonte Verdana*/
+    padding:5px;/*Espaçamento de 5px*/
+    border:1px solid #FFFFFF;/* Borda de 1px na cor branca*/
+    margin:5px;/*Margem de 5px*/
+}
+#btnSubmit:active{/*Quando clicamos no botão submit*/
+    background-color: lightcoral;/*Altermos a cor de fundo*/
+}
+#btnSubmit:hover{/*Quando pasamos o mouse sobre o botão Submit*/
+    background-color: firebrick;/*Alteramos a cor de fundo*/
+    box-shadow:0 0 5px #FFFFFF;/*Criamos uma sobra externa na cor branca*/
+}
+#dvLogin{/*Div login*/
+    width:500px;/*Largura de 500px*/
+    background-color: beige;/*Alteramos  cor de fundo*/
+    border:2px solid #CCCCCC;/*Borda de 2px na cor cinza claro*/
+    margin-top: 100px;/*Criamos uma margem do topo de 100px*/
+    padding:5px;/*Espaçamento de 5px*/
+}
+#linkSair{/*Link sair*/
+    color:#FFFFFF;/*Cor do texto branco*//*Fonte em negrito*/
+    letter-spacing: 1px;/*Espaçamento dos caracteres de 1px*/
+    text-decoration: none;/*Removemos o Underline do link*/
+}
